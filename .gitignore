@@ -1,0 +1,7 @@
+# PlatformIO build output and editor files
+.pio/
+.vscode/
+.DS_Store
+
+# Real WiFi password and API keys. Never commit. Template: include/secrets.example.h
+include/secrets.h
