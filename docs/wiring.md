@@ -23,13 +23,19 @@ Board: ESP32-S3 DevKitC-1 **N16R8**. Pin numbers below are the `GPIO` numbers pr
 | CS | GPIO 10 | |
 | RST | GPIO 14 | |
 
-### Touch sensor TTP223
+### Touch pad (no sensor needed)
 
-| Sensor pin | Connect to |
+The ESP32-S3 has touch sensing built in on GPIO 1–14.
+
+| Part | Connect to |
 |---|---|
-| VCC | 3V3 rail |
-| GND | GND |
-| I/O (or SIG / OUT) | GPIO 8 |
+| One end of a jumper wire | GPIO 8 |
+| Other end | A piece of foil, a coin, or copper tape: Kiki's "head" |
+
+- Only 1 wire. No VCC, no GND.
+- Keep the wire short (under 20 cm). Long wires make it touchy.
+- Do not touch the pad while Kiki boots. She measures the idle level then.
+- Too sensitive or not sensitive enough? Type `touch` in Serial Monitor to see the readings, then change `kTouchOn` in `src/main.cpp`.
 
 ## Step 2: voice (code not written yet)
 
@@ -69,6 +75,32 @@ Board: ESP32-S3 DevKitC-1 **N16R8**. Pin numbers below are the `GPIO` numbers pr
 | Orange, tilt servo (up/down) | GPIO 18 |
 
 If the board restarts when the servos move, USB cannot give enough current. Add a 470–1000 µF capacitor between the 5V rail and GND, or power the servos from a separate 5V supply (keep GND shared).
+
+## Extra sensors (code not written yet)
+
+### Motion sensor MPU6050 (GY-521)
+
+Lets Kiki feel being shaken or picked up.
+
+| Sensor pin | Connect to | Note |
+|---|---|---|
+| VCC | 3V3 rail | |
+| GND | GND | |
+| SDA | GPIO 1 | Real I2C this time |
+| SCL | GPIO 2 | Real I2C this time |
+| XDA, XCL, AD0, INT | leave empty | |
+
+### IR obstacle sensor
+
+Lets Kiki see a hand waving in front of her.
+
+| Sensor pin | Connect to | Note |
+|---|---|---|
+| VCC | 3V3 rail | |
+| GND | GND | |
+| OUT (or DO) | GPIO 21 | LOW when something is in front |
+
+Turn the small screw on the board to set the distance. The second LED lights up when it sees something.
 
 ## Pins to avoid
 

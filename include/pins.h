@@ -11,8 +11,15 @@ constexpr int PIN_TFT_CS   = 10;
 constexpr int PIN_TFT_DC   = 9;
 constexpr int PIN_TFT_RST  = 14;
 
-// Touch sensor TTP223 (HIGH while touched)
+// Touch pad: a wire to a piece of foil. Must be a touch-capable pin (GPIO 1-14).
 constexpr int PIN_TOUCH = 8;
+
+// Motion sensor MPU6050 (GY-521), I2C (code later)
+constexpr int PIN_IMU_SDA = 1;
+constexpr int PIN_IMU_SCL = 2;
+
+// IR obstacle sensor, LOW when something is in front (code later)
+constexpr int PIN_IR = 21;
 
 // Mic INMP441, I2S in (step 2)
 constexpr int PIN_MIC_SCK = 4;
